@@ -79,6 +79,7 @@ const vector<GraphEdge*>& Graph::GetEdges(const GraphNode *gn) const{
                 edge->to = Graph[i][j].to;
                 edge->weight = Graph[i][j].weight;
                 ge->push_back(edge);
+                delete edge;
             }
         }
     }
@@ -93,6 +94,7 @@ const vector<GraphNode*>& Graph::GetNodes() const{
         node->data = Node[i].data;
         node->key = Node[i].key;
         gn->push_back(node);
+        delete node;
     }
     return *gn;
 }
