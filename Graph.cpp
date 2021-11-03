@@ -5,12 +5,12 @@
 
 using namespace std;
 
-Graph::~Graph(){
-    for (int i = 0; i < Node.size(); i++){
+Graph::~Graph(){/*
+    for (int i = 0; i <int (Node.size()-1); i++){
         delete &Node[i];
         delete &Graph[i];
     }
-    
+    */
 }
 
 GraphNode *Graph::AddNode(char key, int data){
@@ -22,7 +22,7 @@ GraphNode *Graph::AddNode(char key, int data){
 
 GraphEdge *Graph::AddEdge(GraphNode *gn1, GraphNode *gn2, unsigned int weight){
     GraphEdge *edge = new GraphEdge {gn1,gn2,weight};
-    for (int i = 0; i < Node.size(); i++)
+    for (int i = 0; i < int(Node.size()); i++)
     {
         if (Node[i].key == gn1->key)
         {
@@ -50,7 +50,7 @@ string Graph::ToString() const {
         if (Graph[i].size() == 0){
             graph_string += "\n";
         }else{
-            for (int j = 0; j < Graph[i].size()-1; j++){   //"a | [(a:15)->(c:9) w:2], [(a:15)->(b:12) w:8]\nb | \nc | [(c:9)->(b:12) w:0]\n "
+            for (int j = 0; j < int(Graph[i].size()-1); j++){   //"a | [(a:15)->(c:9) w:2], [(a:15)->(b:12) w:8]\nb | \nc | [(c:9)->(b:12) w:0]\n "
                 graph_string = graph_string + "[("+Graph[i][j].from->key+":"+to_string(Graph[i][j].from->data)+")->("+Graph[i][j].to->key+":"+to_string(Graph[i][j].to->data)+") w:"+to_string(Graph[i][j].weight)+"], ";
             }
             graph_string = graph_string + "[("+Graph[i][Graph[i].size()-1].from->key+":"+to_string(Graph[i][Graph[i].size()-1].from->data)+")->("+Graph[i][Graph[i].size()-1].to->key+":"+to_string(Graph[i][Graph[i].size()-1].to->data)+") w:"+to_string(Graph[i][Graph[i].size()-1].weight)+"]\n";
@@ -79,7 +79,7 @@ const vector<GraphEdge*>& Graph::GetEdges(const GraphNode *gn) const{
     for (int i = 0; i < int(Node.size()); i++){
         if (gn->key == Node[i].key){
             //ge = Graph[i];
-            for (int j = 0; j < Graph[i].size(); j++){
+            for (int j = 0; j < int(Graph[i].size()); j++){
                 GraphEdge *edge = new GraphEdge;
                 edge->from = Graph[i][j].from;
                 edge->to = Graph[i][j].to;
@@ -114,7 +114,7 @@ const GraphNode* Graph::NodeAt(unsigned int idx) const{
 
 size_t Graph::Size() const{
     size_t graph_size = 0;
-    for (int i = 0; i < Graph.size(); i++){
+    for (int i = 0; i < int(Graph.size()); i++){
         graph_size += Graph[i].size();
     }
     return graph_size;
