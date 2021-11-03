@@ -88,7 +88,7 @@ void TestDestructor(){
 	GraphNode *c = g2.AddNode('c', 12);
 	g2.AddNode('d', 11);
 	assert(c->key == 'c' && c->data == 12);
-	delete c;
+	
 	
 	
 	

@@ -5,7 +5,13 @@
 
 using namespace std;
 
-Graph::~Graph(){}
+Graph::~Graph(){
+    for (int i = 0; i < Node.size()-1; i++){
+        delete &Node[i];
+        delete &Graph[i];
+    }
+    
+}
 
 GraphNode *Graph::AddNode(char key, int data){
     GraphNode *node = new GraphNode {key,data};
