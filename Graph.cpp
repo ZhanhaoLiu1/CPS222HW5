@@ -6,7 +6,7 @@
 using namespace std;
 
 Graph::~Graph(){
-    for (int i = 0; i < Node.size()-1; i++){
+    for (int i = 0; i < Node.size(); i++){
         delete &Node[i];
         delete &Graph[i];
     }
