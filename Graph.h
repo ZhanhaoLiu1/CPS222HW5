@@ -1,4 +1,11 @@
- 
+#ifndef GRAPH_H
+#define GRAPH_H
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
 struct GraphNode {
 	char key;
 	int data; // Not necessary or used for Dijkstra algorithm
@@ -37,5 +44,12 @@ class Graph{
 
 	private:
 		// Your code goes here!
+		vector<GraphNode> Node;
+		vector<vector<GraphEdge> > Graph;
+		
 
-}
+
+};
+
+
+#endif

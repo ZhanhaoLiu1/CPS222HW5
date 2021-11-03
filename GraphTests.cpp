@@ -1,6 +1,7 @@
 
 
 #include "Graph.h"
+#include "Graph.cpp"
 #include <iostream>
 #include <cassert>
 
@@ -91,6 +92,7 @@ void TestDestructor(){
 	
 	
 	cout << "NO ERRORS.  Use valgrind to check!" << endl << endl;
+	
 }
 
 
