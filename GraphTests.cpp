@@ -1,7 +1,7 @@
 
 
 #include "Graph.h"
-//#include "Graph.cpp"
+#include "Graph.cpp"
 #include <iostream>
 #include <cassert>
 
@@ -69,6 +69,24 @@ void TestAddEdge(){
 	assert(g.NodesToString() == "[(a:15), (b:12), (c:9)]");
 	assert(g.ToString() == "a | [(a:15)->(c:9) w:2], [(a:15)->(b:12) w:8]\nb | \nc | [(c:9)->(b:12) w:0]\n");
 	
+	cout << "test get edge"<< endl;
+
+	vector<GraphEdge*> test_get_edge = g.GetEdges(gn1);
+	cout << g.GraphEdgeToString(test_get_edge[0]) << endl;
+	
+	cout << "test get node"<< endl;
+	vector<GraphNode*> test_get_node = g.GetNodes();
+	cout << g.GraphNodeToString(test_get_node[0]) << endl;
+
+	cout << "test node at" << endl;
+
+	cout<< g.GraphNodeToString(g.NodeAt(0))<<endl;
+
+
+	size_t graph_size = g.Size();
+	size_t graph_order = g.Order();
+	cout << "size: " << graph_size << endl << "order: "<< graph_order<<endl;
+
 	cout << "PASSED!" << endl << endl;
 }
 
@@ -98,8 +116,8 @@ void TestDestructor(){
 int main(){
 	
 	//TestAddNode();
-	//TestAddEdge();
-	TestDestructor();
+	TestAddEdge();
+	//TestDestructor();
 
 	// ... more tests ... 
 

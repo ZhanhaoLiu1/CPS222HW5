@@ -5,9 +5,12 @@
 
 using namespace std;
 
-Graph::~Graph(){
-    Node = {};
-    Graph = {};
+Graph::~Graph(){/*
+    for (int i = 0; i <int (Node.size()-1); i++){
+        delete &Node[i];
+        delete &Graph[i];
+    }
+    */
 }
 
 GraphNode *Graph::AddNode(char key, int data){
@@ -82,7 +85,6 @@ const vector<GraphEdge*>& Graph::GetEdges(const GraphNode *gn) const{
                 edge->to = Graph[i][j].to;
                 edge->weight = Graph[i][j].weight;
                 ge->push_back(edge);
-                delete edge;
             }
         }
     }
@@ -97,7 +99,6 @@ const vector<GraphNode*>& Graph::GetNodes() const{
         node->data = Node[i].data;
         node->key = Node[i].key;
         gn->push_back(node);
-        delete node;
     }
     return *gn;
 }

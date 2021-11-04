@@ -2,6 +2,7 @@
 
 #include "Graph.h"
 #include "BetterPriorityQueue.h"
+#include "BetterPriorityQueue.cpp"
 #include <cassert>
 
 using namespace std;
