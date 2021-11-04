@@ -5,11 +5,11 @@
 
 using namespace std;
 
-Graph::~Graph(){
+Graph::~Graph(){/*
     for (int i = 0; i <int (Node.size()); i++){
         Node.pop_back();
         Graph.pop_back();
-    }
+    }*/
     
 }
 
@@ -28,6 +28,8 @@ GraphEdge *Graph::AddEdge(GraphNode *gn1, GraphNode *gn2, unsigned int weight){
             Graph[i] .push_back(*edge);
         }
     }
+    delete gn1;
+    delete gn2;
     return edge;
 }
 
