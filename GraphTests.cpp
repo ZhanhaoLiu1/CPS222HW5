@@ -115,8 +115,8 @@ void TestDestructor(){
 
 int main(){
 	
-	TestAddNode();
-	TestAddEdge();
+	//TestAddNode();
+	//TestAddEdge();
 	TestDestructor();
 
 	// ... more tests ... 
