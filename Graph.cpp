@@ -6,12 +6,9 @@
 using namespace std;
 
 Graph::~Graph(){
-    for (int i = 0; i <int (Node.size()-1); i++){
-        delete &Node[i];
-        for (size_t j = 0; j < Graph[i].size(); j++)
-        {
-            delete &Graph[i][j];
-        }
+    for (int i = 0; i <int (Node.size()); i++){
+        Node.pop_back();
+        Graph.pop_back();
     }
     
 }
@@ -27,8 +24,7 @@ GraphEdge *Graph::AddEdge(GraphNode *gn1, GraphNode *gn2, unsigned int weight){
     GraphEdge *edge = new GraphEdge {gn1,gn2,weight};
     for (int i = 0; i < int(Node.size()); i++)
     {
-        if (Node[i].key == gn1->key)
-        {
+        if (Node[i].key == gn1->key){
             Graph[i] .push_back(*edge);
         }
     }
