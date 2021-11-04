@@ -82,18 +82,13 @@ void TestDestructor(){
 	g->AddEdge(b, a, 15);
 	
 	delete g;
-	delete a;
-	delete b;
-	
+	/*
 	Graph g2 = Graph();
 	GraphNode *c = g2.AddNode('c', 12);
 	g2.AddNode('d', 11);
 	assert(c->key == 'c' && c->data == 12);
-	
-	delete c;
-	
 	cout << "NO ERRORS.  Use valgrind to check!" << endl << endl;
-	
+	*/
 }
 
 

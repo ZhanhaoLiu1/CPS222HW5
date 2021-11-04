@@ -5,12 +5,9 @@
 
 using namespace std;
 
-Graph::~Graph(){/*
-    for (int i = 0; i <int (Node.size()-1); i++){
-        delete &Node[i];
-        delete &Graph[i];
-    }
-    */
+Graph::~Graph(){
+    Node = {};
+    Graph = {};
 }
 
 GraphNode *Graph::AddNode(char key, int data){
