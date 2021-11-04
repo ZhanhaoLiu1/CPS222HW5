@@ -5,11 +5,16 @@
 
 using namespace std;
 
-Graph::~Graph(){/*
-    for (int i = 0; i <int (Node.size()); i++){
-        Node.pop_back();
-        Graph.pop_back();
-    }*/
+Graph::~Graph(){
+    for (size_t i = 0; i < Graph.size(); i++)
+    {
+        for (size_t j = 0; j < Graph[i].size(); j++)
+        {
+            delete Graph[i][j].from;
+            delete Graph[i][j].to;
+        }
+        
+    }
     
 }
 
@@ -28,8 +33,6 @@ GraphEdge *Graph::AddEdge(GraphNode *gn1, GraphNode *gn2, unsigned int weight){
             Graph[i] .push_back(*edge);
         }
     }
-    delete gn1;
-    delete gn2;
     return edge;
 }
 
@@ -72,6 +75,7 @@ string Graph::GraphEdgeToString(const GraphEdge *ge){
     string  graph_edge_string;
     graph_edge_string = "[(";
     graph_edge_string = graph_edge_string + ge->from->key + ":" + to_string(ge->from->data) + ")->(" + ge->to->key + ":" + to_string(ge->to->data) + ") w:" + to_string(ge->weight);
+    delete ge;
     return graph_edge_string;
 }
 
