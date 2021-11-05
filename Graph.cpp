@@ -107,10 +107,7 @@ const vector<GraphNode*>& Graph::GetNodes() const{
 }
 
 const GraphNode* Graph::NodeAt(unsigned int idx) const{
-    GraphNode *node = new GraphNode;
-    node->data = Node.at(idx)->data;
-    node->key = Node.at(idx)->key;
-    return node;
+    return Node.at(idx);
 }
 
 size_t Graph::Size() const{
