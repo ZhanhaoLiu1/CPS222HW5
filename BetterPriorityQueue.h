@@ -4,8 +4,12 @@
 #include "Graph.h"
 #include <iostream>
 #include <vector>
+#include<queue>
+
 
 using namespace std;
+
+
 struct DNode {
 	int pri = INT_MAX;
 	bool visited = false;
@@ -22,29 +26,19 @@ struct DNode {
 	bool operator==(const DNode &other) const {
 		return node == other.node;
 	}
-};
-
-class BetterPriorityQueue
-{
-
-    public:
-        ~BetterPriorityQueue();
-
-        void push(DNode n){};
-        int top(){};
-        void pop(){};
-
-        string ToString() const;
-
-
-        bool Contains(DNode n){};
-        bool Update(DNode n){};
-
-    private:
-        vector<DNode> list; 
-
+	
 };
 
 
+class BetterPriorityQueue: public priority_queue<DNode, vector<DNode>, greater<DNode>>::priority_queue 
+{ 
+	public:
+		bool Contains(DNode n);
+		bool Update(DNode n);
+
+		string ToString();
+		static string DnodeToString(DNode n);
+		vector<DNode> Queue;
+};
 
 #endif

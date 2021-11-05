@@ -1,8 +1,9 @@
 
 
 #include "Graph.h"
+//#include "Graph.cpp"
 #include "BetterPriorityQueue.h"
-#include "BetterPriorityQueue.cpp"
+//#include "BetterPriorityQueue.cpp"
 #include <cassert>
 
 using namespace std;
@@ -14,11 +15,58 @@ void ContainsTest() {
 	BetterPriorityQueue q;
 	
 	GraphNode *a = g.AddNode('a');
-	DNode n;
-	n.node = a;
-	q.push(n);
+	
+	GraphNode *b = g.AddNode('b');
+	GraphNode *c = g.AddNode('c');
+	GraphNode *d = g.AddNode('d');
+	GraphNode *e1 = g.AddNode('e');
+	GraphNode *g1 = g.AddNode('g');
+	GraphNode *h = g.AddNode('h');
+	GraphNode *l = g.AddNode('k');
+	GraphNode *p = g.AddNode('m');
+	GraphNode *o = g.AddNode('n');
 
-	assert(q.Contains(n) == true);
+	DNode an;
+	
+	DNode bn;
+	DNode dn;
+	DNode gn;
+	DNode en;
+	DNode ln;
+	DNode on;
+	DNode pn;
+	DNode cn;
+	DNode hn;
+
+	an.node = a;
+	
+	bn.node = b;
+	dn.node = d;
+	gn.node = g1;
+	ln.node = l;
+	on.node = o;
+	pn.node = p;
+	cn.node = c;
+	hn.node = h;
+	en.node = e1;
+
+	q.push(an);
+	
+	q.push(bn);
+	q.push(hn);
+	q.push(cn);
+	q.push(on);
+	q.push(pn);
+	q.push(gn);
+	
+	assert(q.Contains(an) == true);
+	
+	assert(q.Contains(gn) == true);
+	assert(q.Contains(pn) == true);
+	assert(q.Contains(on) == true);
+	assert(q.Contains(dn) == false);
+	assert(q.Contains(en) == false);
+	assert(q.Contains(ln) == false);
 	
 
 	// more tests go here!
@@ -49,6 +97,7 @@ void UpdateTest() {
 		//cout << "inserting cur.pri: " << cur.pri << "  node: " << cur.node->key << endl;
 		q.push(cur);
 		//cout << "size: " << q.size() << endl;
+		cout << q.DnodeToString(cur)<<endl;
 	}
 	
 
