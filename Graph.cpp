@@ -20,21 +20,25 @@ Graph::~Graph(){
 }
 
 GraphNode *Graph::AddNode(char key, int data){
-    GraphNode *node = new GraphNode {key,data};
-    Node->push_back(node);
+    //GraphNode *node = new GraphNode {key,data};
+    //GraphNode node {key,data};
+    Node->push_back({});
+    Node->at(Node->size()-1) = new GraphNode {key,data};
     Graph->push_back({});
-    return node;
+    return Node->at(Node->size()-1);
 }
 
 GraphEdge *Graph::AddEdge(GraphNode *gn1, GraphNode *gn2, unsigned int weight){
-    GraphEdge *edge = new GraphEdge {gn1,gn2,weight};
+    //GraphEdge *edge = new GraphEdge {gn1,gn2,weight};
+    int count;
     for (int i = 0; i < int(Node->size()); i++)
     {
         if (Node->at(i)->key == gn1->key){
-            Graph->at(i).push_back(edge);
+            count = i;
+            Graph->at(i).push_back(new GraphEdge {gn1,gn2,weight});
         }
     }
-    return edge;
+    return Graph->at(count).at(Graph->at(count).size()-1);
 }
 
 string Graph::NodesToString() const {
