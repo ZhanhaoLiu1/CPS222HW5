@@ -68,7 +68,6 @@ string Graph::GraphNodeToString(const GraphNode *gn){
     string graph_node_string;
     graph_node_string = "[(";
     graph_node_string =  graph_node_string+ gn->key + ":" + to_string(gn->data) + ")]";
-    delete gn;
     return graph_node_string;
 }
 
@@ -76,36 +75,35 @@ string Graph::GraphEdgeToString(const GraphEdge *ge){
     string  graph_edge_string;
     graph_edge_string = "[(";
     graph_edge_string = graph_edge_string + ge->from->key + ":" + to_string(ge->from->data) + ")->(" + ge->to->key + ":" + to_string(ge->to->data) + ") w:" + to_string(ge->weight);
-    delete ge;
     return graph_edge_string;
 }
 
 const vector<GraphEdge*>& Graph::GetEdges(const GraphNode *gn) const{
-    vector<GraphEdge*> *ge = new vector<GraphEdge*>;
+    //vector<GraphEdge*> *ge = new vector<GraphEdge*>;
     for (int i = 0; i < int(Node.size()); i++){
         if (gn->key == Node.at(i)->key){
-            for (int j = 0; j < int(Graph.at(i).size()); j++){
+            /*for (int j = 0; j < int(Graph.at(i).size()); j++){
                 GraphEdge *edge = new GraphEdge;
                 edge->from = Graph.at(i).at(j)->from;
                 edge->to = Graph.at(i).at(j)->to;
                 edge->weight = Graph.at(i).at(j)->weight;
                 ge->push_back(edge);
-            }
+            }*/
+            return Graph.at(i);
         }
     }
-    return *ge;
 }
 
 const vector<GraphNode*>& Graph::GetNodes() const{
-    vector<GraphNode*> *gn = new vector<GraphNode*>;
-    for (int i = 0; i < int(Node.size()); i++)
+    //vector<GraphNode*> *gn = new vector<GraphNode*>;
+    /*for (int i = 0; i < int(Node.size()); i++)
     {
         GraphNode *node = new GraphNode;
         node->data = Node.at(i)->data;
         node->key = Node.at(i)->key;
         gn->push_back(node);
-    }
-    return *gn;
+    }*/
+    return Node;
 }
 
 const GraphNode* Graph::NodeAt(unsigned int idx) const{
