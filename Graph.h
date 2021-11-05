@@ -44,8 +44,8 @@ class Graph{
 
 	private:
 		// Your code goes here!
-		vector<GraphNode> *Node = new vector<GraphNode>;
-		vector<vector<GraphEdge>> *Graph = new vector<vector <GraphEdge>>;
+		vector<GraphNode*> *Node = new vector<GraphNode*>;
+		vector<vector<GraphEdge*>> *Graph = new vector<vector <GraphEdge*>>;
 		
 
 

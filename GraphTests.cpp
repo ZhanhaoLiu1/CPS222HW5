@@ -1,7 +1,7 @@
 
 
 #include "Graph.h"
-//#include "Graph.cpp"
+#include "Graph.cpp"
 #include <iostream>
 #include <cassert>
 
