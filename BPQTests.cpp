@@ -87,7 +87,7 @@ void UpdateTest() {
 	g.AddNode('b');
 	g.AddNode('c');
 	g.AddNode('d');
-	GraphNode *e = g.AddNode('e');
+	g.AddNode('e');
 	GraphNode *f = g.AddNode('f');
 	vector<GraphNode*> nodes = g.GetNodes();
 	for(size_t i = 0; i < nodes.size(); i++){

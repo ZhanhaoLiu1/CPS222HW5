@@ -13,7 +13,7 @@ using namespace std;
 
 struct DNode {
 	int pri = INT_MAX;
-	bool visited = false;
+	//bool visited = false;
 	const GraphNode *node = nullptr;
 	
 	bool operator<(const DNode &other) const {

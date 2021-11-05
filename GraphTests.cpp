@@ -77,6 +77,7 @@ void TestAddEdge(){
 	
 	assert(g.NodesToString() == "[(a:15), (b:12), (c:9)]");
 	assert(g.ToString() == "a | [(a:15)->(c:9) w:2], [(a:15)->(b:12) w:8]\nb | \nc | [(c:9)->(b:12) w:0]\n");
+
 	GraphNode *gn6 = new GraphNode {'f',8};
 	try{
 		g.AddEdge(gn6, gn1, 6);
@@ -86,14 +87,17 @@ void TestAddEdge(){
 		
 	}
 
+	GraphNode *gn7 = new GraphNode {'f',8};
 	try{
-		g.AddEdge(gn3, gn6, 6);
+		g.AddEdge(gn3, gn7, 6);
 		assert(false);
 	}
 	catch(const invalid_argument& e){
 		
 	}
-
+	
+	delete gn6;
+	delete gn7;
 
 
 	cout << "PASSED!" << endl << endl;
@@ -133,7 +137,7 @@ void TestGetEdges(){
 		
 	}
 
-	
+	delete gn6;
 
 	cout << "PASSED!" << endl << endl;
 }

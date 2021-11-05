@@ -42,9 +42,11 @@ GraphEdge *Graph::AddEdge(GraphNode *gn1, GraphNode *gn2, unsigned int weight){
                 return Graph.at(count).at(Graph.at(count).size()-1);
                 }
             }
+            //delete gn2;
             throw invalid_argument("Node To is not exists");
         }
     }
+    //delete gn1;
     throw invalid_argument("Node From is not exists");
 }
 
