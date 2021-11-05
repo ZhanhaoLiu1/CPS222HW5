@@ -110,7 +110,7 @@ void TestGetEdges(){
 
 	GraphNode *gn4 = g.AddNode('d',10);
 
-	GraphNode *gn5 = g.AddNode('e',7);
+	g.AddNode('e',7);
 
 	GraphNode *gn6 = new GraphNode {'f',8};
 
@@ -141,17 +141,12 @@ void TestGetEdges(){
 void TestGetNodes(){
 	cout << "Testing GetNodes..."<< endl;
 	Graph g = Graph();
-	GraphNode *gn1 = g.AddNode('a', 15);
-	
-	GraphNode *gn2 = g.AddNode('b', 12);
-	
-	GraphNode *gn3 = g.AddNode('c', 9);
+	g.AddNode('a', 15);
+	g.AddNode('b', 12);
+	g.AddNode('c', 9);
+	g.AddNode('d',10);
+	g.AddNode('e',7);
 
-	GraphNode *gn4 = g.AddNode('d',10);
-
-	GraphNode *gn5 = g.AddNode('e',7);
-
-	GraphNode *gn6 = new GraphNode {'f',8};
 
 	vector<GraphNode*> test_node = g.GetNodes();
 	string get_node = "[";
@@ -168,15 +163,11 @@ void TestGetNodes(){
 void TestNodeAt(){
 	cout << "Testing NodeAt..." << endl;
 	Graph g = Graph();
-	GraphNode *gn1 = g.AddNode('a', 15);
-	
-	GraphNode *gn2 = g.AddNode('b', 12);
-	
-	GraphNode *gn3 = g.AddNode('c', 9);
-
-	GraphNode *gn4 = g.AddNode('d',10);
-
-	GraphNode *gn5 = g.AddNode('e',7);
+	g.AddNode('a', 15);
+	g.AddNode('b', 12);
+	g.AddNode('c', 9);
+	g.AddNode('d',10);
+	g.AddNode('e',7);
 
 	//cout << g.GraphNodeToString(g.NodeAt(0)) << endl;
 	assert(g.GraphNodeToString(g.NodeAt(0)) == "(a:15)");
@@ -204,10 +195,8 @@ void TestSize(){
 	GraphNode *gn3 = g.AddNode('c', 9);
 
 	GraphNode *gn4 = g.AddNode('d',10);
+	g.AddNode('e',7);
 
-	GraphNode *gn5 = g.AddNode('e',7);
-
-	GraphNode *gn6 = new GraphNode {'f',8};
 
 	g.AddEdge(gn1, gn3, 2);
 	g.AddEdge(gn3, gn1, 6);
@@ -229,9 +218,8 @@ void TestOrder(){
 
 	GraphNode *gn4 = g.AddNode('d',10);
 
-	GraphNode *gn5 = g.AddNode('e',7);
+	g.AddNode('e',7);
 
-	GraphNode *gn6 = new GraphNode {'f',8};
 
 	g.AddEdge(gn1, gn3, 2);
 	g.AddEdge(gn3, gn1, 6);
