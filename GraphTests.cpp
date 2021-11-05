@@ -87,6 +87,8 @@ void TestAddEdge(){
 	size_t graph_order = g.Order();
 	cout << "size: " << graph_size << endl << "order: "<< graph_order<<endl;
 
+
+
 	cout << "PASSED!" << endl << endl;
 }
 
@@ -100,13 +102,14 @@ void TestDestructor(){
 	g->AddEdge(b, a, 15);
 	
 	delete g;
+
 	
 	Graph g2 = Graph();
 	GraphNode *c = g2.AddNode('c', 12);
 	g2.AddNode('d', 11);
 	assert(c->key == 'c' && c->data == 12);
 	cout << "NO ERRORS.  Use valgrind to check!" << endl << endl;
-	
+
 }
 
 

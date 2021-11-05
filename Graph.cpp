@@ -68,6 +68,7 @@ string Graph::GraphNodeToString(const GraphNode *gn){
     string graph_node_string;
     graph_node_string = "[(";
     graph_node_string =  graph_node_string+ gn->key + ":" + to_string(gn->data) + ")]";
+    delete gn;
     return graph_node_string;
 }
 
