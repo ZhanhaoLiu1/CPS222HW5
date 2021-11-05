@@ -6,6 +6,15 @@
 using namespace std;
 
 Graph::~Graph(){
+    for (size_t i = 0; i < Graph->size(); i++)
+    {
+        Node->pop_back();
+        for (size_t j = 0; j < Graph->at(i).size(); j++)
+        {
+            Graph->at(i).pop_back();
+        }
+        Graph->pop_back();
+    }
     delete Node;
     delete Graph;
 }
