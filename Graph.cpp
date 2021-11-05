@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Graph::~Graph(){
+Graph::~Graph(){// delete the every node and graph by loop
     for (size_t i = 0; i < Graph.size(); i++)
     {
         delete Node.at(i);
@@ -16,20 +16,19 @@ Graph::~Graph(){
     }
 }
 
-GraphNode *Graph::AddNode(char key, int data){
+GraphNode *Graph::AddNode(char key, int data){ //push new node into vector and add a empty set into graph
     for (size_t i = 0; i < Node.size(); i++)
     {
-        if(key == Node.at(i)->key){
+        if(key == Node.at(i)->key){// if node already in Node throw exception
             throw invalid_argument("Node already exists");
         }
     }
-    
     Node.push_back(new GraphNode {key,data});
     Graph.push_back({});
     return Node.at(Node.size()-1);
 }
 
-GraphEdge *Graph::AddEdge(GraphNode *gn1, GraphNode *gn2, unsigned int weight){
+GraphEdge *Graph::AddEdge(GraphNode *gn1, GraphNode *gn2, unsigned int weight){// Check the gn1 in Node get the position and push the edge in to graph by loop
     int count;
     for (int i = 0; i < int(Node.size()); i++)
     {
@@ -91,7 +90,7 @@ string Graph::GraphEdgeToString(const GraphEdge *ge){
     return graph_edge_string;
 }
 
-const vector<GraphEdge*>& Graph::GetEdges(const GraphNode *gn) const{
+const vector<GraphEdge*>& Graph::GetEdges(const GraphNode *gn) const{// Find the to node in edge get the position in Node and return the same place in Graph
     for (int i = 0; i < int(Node.size()); i++){
         if (gn->key == Node.at(i)->key){
             return Graph.at(i);

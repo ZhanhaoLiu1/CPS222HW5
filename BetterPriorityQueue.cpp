@@ -5,7 +5,7 @@
 using namespace std;
 
 
-bool BetterPriorityQueue::Contains(DNode n){
+bool BetterPriorityQueue::Contains(DNode n){// copy all the container in priority_queue and find the DNode
     Queue = priority_queue::c;
     for (size_t i = 0; i < Queue.size(); i++)
     {
@@ -18,7 +18,7 @@ bool BetterPriorityQueue::Contains(DNode n){
     return false;
 }
 
-bool BetterPriorityQueue::Update(DNode n){
+bool BetterPriorityQueue::Update(DNode n){// copy all the container in priority_queue, change the value in copy. empty all the queue and rewrite into it
     Queue = priority_queue::c;
     for (size_t i = 0; i < Queue.size(); i++)
     {
