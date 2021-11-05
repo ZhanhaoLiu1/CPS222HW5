@@ -17,24 +17,35 @@ Graph::~Graph(){
 }
 
 GraphNode *Graph::AddNode(char key, int data){
-    //GraphNode *node = new GraphNode {key,data};
-    //GraphNode node {key,data};
+    for (size_t i = 0; i < Node.size(); i++)
+    {
+        if(key == Node.at(i)->key){
+            throw invalid_argument("Node already exists");
+        }
+    }
+    
     Node.push_back(new GraphNode {key,data});
     Graph.push_back({});
     return Node.at(Node.size()-1);
 }
 
 GraphEdge *Graph::AddEdge(GraphNode *gn1, GraphNode *gn2, unsigned int weight){
-    //GraphEdge *edge = new GraphEdge {gn1,gn2,weight};
     int count;
     for (int i = 0; i < int(Node.size()); i++)
     {
         if (Node.at(i)->key == gn1->key){
-            count = i;
-            Graph.at(i).push_back(new GraphEdge {gn1,gn2,weight});
+            for (size_t j = 0; j < Node.size(); j++)
+            {
+                if (Node.at(j)->key == gn2->key){
+                    count = i;
+                Graph.at(i).push_back(new GraphEdge {gn1,gn2,weight});
+                return Graph.at(count).at(Graph.at(count).size()-1);
+                }
+            }
+            throw invalid_argument("Node To is not exists");
         }
     }
-    return Graph.at(count).at(Graph.at(count).size()-1);
+    throw invalid_argument("Node From is not exists");
 }
 
 string Graph::NodesToString() const {
@@ -66,47 +77,36 @@ string Graph::ToString() const {
 
 string Graph::GraphNodeToString(const GraphNode *gn){
     string graph_node_string;
-    graph_node_string = "[(";
-    graph_node_string =  graph_node_string+ gn->key + ":" + to_string(gn->data) + ")]";
+    graph_node_string = "(";
+    graph_node_string =  graph_node_string+ gn->key + ":" + to_string(gn->data) + ")";
     return graph_node_string;
 }
 
 string Graph::GraphEdgeToString(const GraphEdge *ge){
     string  graph_edge_string;
     graph_edge_string = "[(";
-    graph_edge_string = graph_edge_string + ge->from->key + ":" + to_string(ge->from->data) + ")->(" + ge->to->key + ":" + to_string(ge->to->data) + ") w:" + to_string(ge->weight);
+    graph_edge_string = graph_edge_string + ge->from->key + ":" + to_string(ge->from->data) + ")->(" + ge->to->key + ":" + to_string(ge->to->data) + ") w:" + to_string(ge->weight) + "]";
     return graph_edge_string;
 }
 
 const vector<GraphEdge*>& Graph::GetEdges(const GraphNode *gn) const{
-    //vector<GraphEdge*> *ge = new vector<GraphEdge*>;
     for (int i = 0; i < int(Node.size()); i++){
         if (gn->key == Node.at(i)->key){
-            /*for (int j = 0; j < int(Graph.at(i).size()); j++){
-                GraphEdge *edge = new GraphEdge;
-                edge->from = Graph.at(i).at(j)->from;
-                edge->to = Graph.at(i).at(j)->to;
-                edge->weight = Graph.at(i).at(j)->weight;
-                ge->push_back(edge);
-            }*/
             return Graph.at(i);
         }
     }
+    throw invalid_argument("Not have edge exist");
 }
 
 const vector<GraphNode*>& Graph::GetNodes() const{
-    //vector<GraphNode*> *gn = new vector<GraphNode*>;
-    /*for (int i = 0; i < int(Node.size()); i++)
-    {
-        GraphNode *node = new GraphNode;
-        node->data = Node.at(i)->data;
-        node->key = Node.at(i)->key;
-        gn->push_back(node);
-    }*/
     return Node;
 }
 
 const GraphNode* Graph::NodeAt(unsigned int idx) const{
+    if (idx >= Node.size())
+    {
+        throw invalid_argument("Index Invalid");
+    }
     return Node.at(idx);
 }
 
