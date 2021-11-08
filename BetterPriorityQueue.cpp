@@ -9,7 +9,7 @@ bool BetterPriorityQueue::Contains(DNode n){// copy all the container in priorit
     Queue = priority_queue::c;
     for (size_t i = 0; i < Queue.size(); i++)
     {
-        if (n.node->key==Queue[i].node->key)
+        if (n==Queue[i])
         {
             return true;
         }
@@ -22,7 +22,7 @@ bool BetterPriorityQueue::Update(DNode n){// copy all the container in priority_
     Queue = priority_queue::c;
     for (size_t i = 0; i < Queue.size(); i++)
     {
-        if (n.node->key == Queue[i].node->key)
+        if (n == Queue[i] && n.pri < Queue[i].pri )
         {
             Queue[i].pri=n.pri;
             for (size_t k = 0; k <Queue.size(); k++)
