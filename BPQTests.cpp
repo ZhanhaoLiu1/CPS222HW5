@@ -1,9 +1,9 @@
 
 
 #include "Graph.h"
-//#include "Graph.cpp"
+#include "Graph.cpp"
 #include "BetterPriorityQueue.h"
-//#include "BetterPriorityQueue.cpp"
+#include "BetterPriorityQueue.cpp"
 #include <cassert>
 
 using namespace std;
