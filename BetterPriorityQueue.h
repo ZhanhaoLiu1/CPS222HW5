@@ -27,7 +27,6 @@ struct DNode {
 	bool operator==(const DNode &other) const {
 		return node == other.node;
 	}
-	
 };
 
 
