@@ -14,8 +14,6 @@ using namespace std;
 
 
 int dijkstra(const GraphNode *start, const GraphNode *end, Graph *g){
-	
-	
 	BetterPriorityQueue q;
 	vector<GraphNode*> nodes = g->GetNodes();
 	bool contain_start=false;
@@ -39,18 +37,21 @@ int dijkstra(const GraphNode *start, const GraphNode *end, Graph *g){
 	{
 		throw invalid_argument("Node not exists");
 	}
-	
-	
-	
+	/*
+		Using bool to check if the Node is valid, and using loop to put the edge into Priority Queue.
+		Set the distance to the begining node is zero, other set to infinity.
+	*/
 
+	
 	DNode pointer = q.top();
 	cout<<"(" << pointer.node->key<<":"<<pointer.pri<<")"<<endl;
 	q.pop();
 	while (pointer.node != end)
 	{
 		vector<GraphEdge*> edges = g->GetEdges(pointer.node);
+		// get the top node and finding all the edge of this node
 		for (size_t i = 0; i < edges.size(); i++)
-		{
+		{// In each run update the val of the road
 			DNode exchange_value;
 			exchange_value.node = edges[i]->to;
 			if (pointer.pri == INT_MAX){
@@ -107,20 +108,24 @@ int DijkstraTest(){
 	GraphNode *i = new GraphNode;
 	
 	cout << g->ToString() << endl;
-	
+	cout << "Normal testing" << endl;
 	unsigned int ans = dijkstra(g->NodeAt(0), e, g);
 	assert(ans == 20);
-	cout << "Pass"<<endl;
+	cout << " "<<endl;
 	ans = dijkstra(g->NodeAt(0), d, g);
 	assert(ans == 20);
-	cout << "Pass"<<endl;
+	cout << "Passed!"<<endl;
+	cout << " "<<endl;
+	cout << "Testing Unconnected" << endl;
 	GraphNode *h = g->AddNode('7');
 	ans = dijkstra(g->NodeAt(0), h, g);
 	assert(ans = INT_MAX);
-	cout << "Pass"<<endl;
+	cout << " "<<endl;
 	ans = dijkstra(h, e, g);
 	assert(ans = INT_MAX);
-	cout << "Pass"<<endl;
+	cout << "Passed!"<<endl;
+	cout << " "<<endl;
+	cout << "Testing not exist Node" << endl;
 
 	try{
 		ans = dijkstra(i, e, g);
@@ -129,7 +134,6 @@ int DijkstraTest(){
 	catch(const invalid_argument& e){
 		
 	}
-	cout << "Pass"<<endl;
 	try{
 		ans = dijkstra(e, i, g);
 		assert(false);
@@ -138,8 +142,7 @@ int DijkstraTest(){
 		
 	}
 
-
-	cout << "g1 all passed!"<<endl;
+	cout << "Passed!"<<endl;
 	delete g;
 	delete i;
 
@@ -173,18 +176,24 @@ int DijkstraTest(){
 	
 	g2->AddEdge(d1, e1, 6);
 	g2->AddEdge(e1, d1, 6);
-
-	ans = dijkstra(g2->NodeAt(0), e1, g2);
-	assert(ans == INT_MAX);
-	cout << "Pass"<<endl;
+	cout << " "<<endl;
+	cout << "Testing single side edge" << endl;
 	ans = dijkstra(f1, a1, g2);
 	assert(ans == 11);
-	cout << "Pass"<<endl;
+	cout << " "<<endl;
+	ans = dijkstra(g2->NodeAt(0), e1, g2);
+	assert(ans == INT_MAX);
+	cout << "Passed!"<<endl;
+
+	cout << " "<<endl;
+	cout << "Testing selfNode" << endl;
 	ans = dijkstra(a1, a1, g2);
 	assert(ans == 0);
-	cout << "Pass"<<endl;
+	cout << "Passed!"<<endl;
 	delete g2;
 
+	cout << " "<<endl;
+	cout << "All Test Passed!";
 	return ans;
 }
 
