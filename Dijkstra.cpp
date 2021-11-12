@@ -35,7 +35,7 @@ int dijkstra(const GraphNode *start, const GraphNode *end, Graph *g){
 	}
 	if (contain_start == false || contain_end == false)
 	{
-		throw invalid_argument("Node not exists");
+		return INT_MAX;
 	}
 	/*
 		Using bool to check if the Node is valid, and using loop to put the edge into Priority Queue.
@@ -127,20 +127,15 @@ int DijkstraTest(){
 	cout << " "<<endl;
 	cout << "Testing not exist Node" << endl;
 
-	try{
-		ans = dijkstra(i, e, g);
-		assert(false);
-	}
-	catch(const invalid_argument& e){
-		
-	}
-	try{
-		ans = dijkstra(e, i, g);
-		assert(false);
-	}
-	catch(const invalid_argument& e){
-		
-	}
+	
+	ans = dijkstra(i, e, g);
+	assert(ans == INT_MAX);
+	
+
+
+	ans = dijkstra(e, i, g);
+	assert(ans == INT_MAX);
+
 
 	cout << "Passed!"<<endl;
 	delete g;
